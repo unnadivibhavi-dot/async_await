@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Home(),
-  ));
+  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: Home()));
 }
 
 class Home extends StatefulWidget {
@@ -15,32 +12,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
-  // TODO 1: Add the 'async' keyword right after the parenthesis to allow asynchronous operations inside this method
-  Future<void> getData() {
-    
-    // TODO 2: Add the 'await' keyword before Future.delayed to pause execution for 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
+  // TODO 1: Added the 'async' keyword
+  Future<void> getData() async {
+    // TODO 2: Added the 'await' keyword before Future.delayed
+    await Future.delayed(const Duration(seconds: 3), () {
       print("Diluka");
     });
-    
+
+    // This will now print AFTER the 3-second delay
     print("Hello");
   }
 
   @override
   void initState() {
     super.initState();
-    // TODO 3: Call the getData() function here so it executes when the widget is initialized
-    
+    // TODO 3: Called the getData() function here
+    getData();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Async & Await Lab"),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text("Async & Await Lab"), centerTitle: true),
       body: const Center(
         child: Text(
           "Check the debug console after 3 seconds!",
